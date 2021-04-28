@@ -63,7 +63,7 @@ router.post(`/`, async (req, res) =>{
         image: req.body.image,
         price: req.body.price,
         category: req.body.category,
-        fid: req.body.fid
+        fid: req.body.fid,
  
     })
 
@@ -94,6 +94,7 @@ router.put("/:id", async (req,res)=>{
             category: req.body.category,
             fid: req.body.fid,
             subscribed_user: req.body.subscribed_user
+            in_stock: req.body.in_stock
         },
         {new: true}
     )

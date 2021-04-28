@@ -28,6 +28,10 @@ const productSchema = mongoose.Schema({
         type: Number,
         default:0
     },
+    in_stock : {
+        type: Boolean,
+        default:false
+    },
     subscribed_user:  [String]
      ,
     dateCreated: {
