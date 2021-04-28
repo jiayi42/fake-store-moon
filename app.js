@@ -35,62 +35,19 @@ app.use(morgan('tiny'));
 const got = require('got');
 const {Product} = require('./models/product');
  
-// const apifake = () => {
-//   return new Promise((resolve, reject) => {
-//     got('https://fakestoreapi.com/products', { json: true }).then(response => {
-//       resolve(response.body);
-//     }).catch(error => {
-//       reject(error.response.body) ;
-//     })
-//   })
-// }
-
-// function sleep(ms) {
-//   return new Promise(resolve => setTimeout(resolve, ms));
-// }
-
-// async function democompare() {
- 
-
-//   // Sleep in loop
-//   for (;;) {
- 
-//       await sleep(1000);
-//       //mongo db product
-//       const productList = await Product.find( ).select('name price description category  image -_id').populate('category');
-//       // fake store data
-//       const fakedata = await apifake()
-//       .then(data => {return data ;})
-//       .catch(err => console.error(err))
-
-//       // compare logic for a notification for certain condition (may be just hard code condition for proof of concept)
-//       // need to do some research about how to send a notification to frontend actively
-//       // maybe just fronted periodically http get certain new mongo schema which indicates notification?
-//       console.log(fakedata);
-//       console.log(productList);
-//   }
-// }
-
-//democompare();
-
- 
-
 //Routes
 const categoriesRoutes = require("./routes/categories");
 const productsRoutes = require("./routes/products");
-//const usersRoutes = require("./routes/users");
-//const ordersRoutes = require("./routes/orders");
 
 const api = process.env.API_URL;
 
 app.use(`${api}/categories`, categoriesRoutes);
 app.use(`${api}/products`, productsRoutes);
-//app.use(`${api}/users`, usersRoutes);
-//app.use(`${api}/orders`, ordersRoutes);
 
  
 
-mongoose.connect(process.env.CONNECTION_STRING,{
+mongoose.connect("mongodb+srv://shop-user:qweasdzxc03@cluster0.80jyg.mongodb.net/eshop-database?retryWrites=true&w=majority
+",{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: 'eshop-database'
