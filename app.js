@@ -46,8 +46,7 @@ app.use(`${api}/products`, productsRoutes);
 
  
 
-mongoose.connect("mongodb+srv://shop-user:qweasdzxc03@cluster0.80jyg.mongodb.net/eshop-database?retryWrites=true&w=majority
-",{
+mongoose.connect("mongodb+srv://shop-user:qweasdzxc03@cluster0.80jyg.mongodb.net/eshop-database?retryWrites=true&w=majority",{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: 'eshop-database'
