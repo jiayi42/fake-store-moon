@@ -106,7 +106,7 @@ router.put("/:id", async (req,res)=>{
 
 })
 
-router.put("/subscribed_user/:id", async (req,res)=>{
+router.put("/remove/subscribed_user/:id", async (req,res)=>{
     if(! mongoose.isValidObjectId(req.params.id)){
         res.status(400).send("Invalid Product Id");
     }
@@ -115,8 +115,35 @@ router.put("/subscribed_user/:id", async (req,res)=>{
 
     const product =await Product.findByIdAndUpdate(
         req.params.id,
+        
         {
-            subscribed_user: req.body.subscribed_user
+            $pull: { subscribed_user: req.body.subscribed_user }
+             
+        },
+        {new: true}
+    )
+
+    if(!product){
+        return res.status(404).send('the product cannot be updated!');
+    }
+
+    res.send(product);
+
+})
+
+router.put("/append/subscribed_user/:id", async (req,res)=>{
+    if(! mongoose.isValidObjectId(req.params.id)){
+        res.status(400).send("Invalid Product Id");
+    }
+    //const category = await Category.findById(req.body.category);
+    //if (!category) return res.status(401).send("Invalid Category")
+
+    const product =await Product.findByIdAndUpdate(
+        req.params.id,
+        
+        {
+            $push: { subscribed_user: req.body.subscribed_user }
+             
         },
         {new: true}
     )
