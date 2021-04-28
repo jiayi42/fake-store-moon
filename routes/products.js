@@ -93,7 +93,7 @@ router.put("/:id", async (req,res)=>{
             price: req.body.price,
             category: req.body.category,
             fid: req.body.fid,
-            subscribed_user: req.body.subscribed_user
+            subscribed_user: req.body.subscribed_user,
             in_stock: req.body.in_stock
         },
         {new: true}
